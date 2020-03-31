@@ -9,7 +9,11 @@ BoundaryDetector is a sample Application which I developed while learning Xamari
 <img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/3.jpg" width="30%" height="35%"/>
 </p>
 
-
+<p align="center">
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/4.jpg" width="30%" height="35%"/>
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/5.jpg" width="30%" height="35%"/>
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/6.jpg" width="30%" height="35%"/>
+</p>
 
 ## Architecture
 The Model-View-ViewModel (MVVM) pattern helps to cleanly separate the business and presentation logic of an application from its user interface (UI). Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app.

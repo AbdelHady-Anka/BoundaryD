@@ -18,3 +18,22 @@ BoundaryDetector is a sample Application which I developed while learning Xamari
 ## Architecture
 The Model-View-ViewModel (MVVM) pattern helps to cleanly separate the business and presentation logic of an application from its user interface (UI). Maintaining a clean separation between application logic and the UI helps to address numerous development issues and can make an application easier to test, maintain, and evolve. It can also greatly improve code re-use opportunities and allows developers and UI designers to more easily collaborate when developing their respective parts of an app.
 There are three core components in the MVVM pattern: the model, the view, and the view model. Each serves a distinct purpose.
+
+<p align="center">
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/mvvm.png"/>
+</p>
+
+## Publisher Subscriber Pattern
+implemented by MessagingCenter
+
+The Xamarin.Forms MessagingCenter class implements the publish-subscribe pattern, allowing message-based communication between components that are inconvenient to link by object and type references.
+
+This mechanism allows publishers and subscribers to communicate without having a reference to each other, helping to reduce dependencies between them.
+
+The MessagingCenter class provides multicast publish-subscribe functionality.
+
+This means that there can be multiple publishers that publish a single message, and there can be multiple subscribers listening for the same message:
+<p align="center">
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/mc.png"/>
+</p>
+

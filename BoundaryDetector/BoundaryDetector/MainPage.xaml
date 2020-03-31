@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:BoundaryDetector.ViewModels;assembly=BoundaryDetector"
+             xmlns:views="clr-namespace:BoundaryDetector.Views;assembly=BoundaryDetector"
+             x:Class="BoundaryDetector.MainPage"
+             x:Name="root">
+    <ContentPage.BindingContext>
+        <local:GFieldViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <StyleSheet Source="/Assets/Style.css"/>
+    </ContentPage.Resources>
+    <RelativeLayout>
+
+        <StackLayout
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+
+            <!--map-->
+            <ContentView Content="{Binding Map}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+
+
+        </StackLayout>
+        <StackLayout Margin="10,10,10,10">
+            <Button x:Name="AddGFieldButton" 
+                    Text="&#xf067;" FontFamily="{StaticResource FontAwesomeSolid}" 
+                    CornerRadius="40" HeightRequest="50" WidthRequest="50" 
+                    IsEnabled="False" BackgroundColor="#faf9f8"
+                    Clicked="AddGFieldButton_Clicked"
+                    FontSize="Large"
+                    />
+
+            <Button x:Name="ClearMapButton" 
+                    Text="&#xf248;" FontFamily="{StaticResource FontAwesomeRegular}" 
+                    CornerRadius="40" HeightRequest="50" WidthRequest="50" 
+                    BackgroundColor="#faf9f8"
+                    Command="{Binding ClearMapCommand}"
+                    FontSize="Large"
+                    />
+        </StackLayout>
+        <Frame Visual="Material" HasShadow="true" CornerRadius="8" Padding="1,4,1,0" BackgroundColor="#faf9f8"
+                     x:Name="bottomSheet" 
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                        Property=Height,Factor=.9,Constant=0}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Width,Factor=1,Constant=0}"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression
+                        Type=RelativeToParent,Property=Height,Factor=1,Constant=0}">
+            <Frame.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="OnPanUpdated" />
+            </Frame.GestureRecognizers>
+            <StackLayout Spacing="5">
+                <BoxView HeightRequest="5" CornerRadius="2" WidthRequest="50" BackgroundColor="Gray" HorizontalOptions="Center" Margin="0,0,0,4"/>
+                <StackLayout x:Name="SearchLayout">
+                    <Label Text="Search" TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Large"/>
+
+                    <SearchBar x:Name="SearchBox" 
+                               Placeholder="Search in saved regions" 
+                               BackgroundColor="Transparent" Focused="SearchBar_Focused" 
+                               SearchCommand="{Binding PerformSearchCommand}"
+                               TextChanged="SearchBar_TextChanged"
+                               SearchCommandParameter="{Binding Text, Source={x:Reference SearchBox}}"/>
+
+                    <StackLayout>
+
+                        <ListView ItemsSource="{Binding GFields}" HasUnevenRows="True" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <views:PanView 
+                                        DeleteCommand="{Binding Path=BindingContext.DeleteCommand , Source={x:Reference root}}" 
+                                        DeleteCommandParameter="{Binding .}"
+                                        ShowFieldCommand="{Binding Path=BindingContext.ShowFieldCommand , Source={x:Reference root}}"
+                                        ShowFieldCommandParameter="{Binding .}"
+                                        UpdateFieldCommand="{Binding Path=BindingContext.UpdateCommand , Source={x:Reference root}}"
+                                        UpdateFieldCommandParameter="{Binding .}"/>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout x:Name="ManageLayout" IsVisible="False">
+                    <Label Text="Save Region" TextColor="Black" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontSize="Large"/>
+
+                    <Frame
+                        HasShadow="False"
+                        Padding="10, 2, 10 ,2"
+                        BorderColor="{StaticResource LightColor}"
+                        Margin="3"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label FontSize="Large" 
+                                   VerticalOptions="Center"  
+                                   StyleClass="label" 
+                                   Text="&#xf024;" 
+                                   FontFamily="{StaticResource FontAwesomeRegular}" 
+                                   HorizontalOptions="Start"/>
+                            <Entry 
+                               HorizontalTextAlignment="Start"
+                               HorizontalOptions="FillAndExpand"
+                               Placeholder="Field Name"
+                               BackgroundColor="Transparent"
+                               Visual="Custom"
+                               Focused="SearchBar_Focused"
+                               Text="{Binding GField.FieldName, Mode=TwoWay}"
+                               >
+
+                            </Entry>
+                        </StackLayout>
+                    </Frame>
+
+                    <Button Text="Save"
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Padding="8"
+                            Margin="10"
+                            TextColor="Black"
+                            Visual="Material"
+                            BackgroundColor="White"
+                            Command="{Binding SaveCommand}">
+                    </Button>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+
+    </RelativeLayout>
+</ContentPage>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+          xmlns:d="http://xamarin.com/schemas/2014/forms/design" 
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+          x:Name="rootViewCell"
+          mc:Ignorable="d" x:Class="BoundaryDetector.Views.PanView">
+    <ViewCell.View>
+
+        <StackLayout>
+            <Frame HasShadow="False" Padding="10, 2, 10 ,2" BorderColor="{StaticResource LightColor}" Margin="3" VerticalOptions="FillAndExpand">
+               
+                <StackLayout Orientation="Vertical" VerticalOptions="FillAndExpand" BackgroundColor="White">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
+                        
+                        <Frame x:Name="EditFieldFrame"
+                        HasShadow="False"
+                        Padding="10, 2, 10 ,2"
+                        Margin="3"
+                        BorderColor="#00D3D3D3"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="Center">
+
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="Large" 
+                                   VerticalOptions="Center"  
+                                   StyleClass="label" 
+                                   Text="&#xf024;" 
+                                   FontFamily="{StaticResource FontAwesomeRegular}" 
+                                   HorizontalOptions="Start"/>
+                                <Entry x:Name="FieldNameEntry"
+                               HorizontalTextAlignment="Start"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="Transparent"
+                               Visual="Custom"
+                               TextColor="Black"
+                               Text="{Binding FieldName, Mode=TwoWay}"
+                               IsEnabled="False"
+                               >
+
+                                </Entry>
+                            </StackLayout>
+                        </Frame>
+
+                        <!--delete field button-->
+                        <ImageButton HorizontalOptions="End" Padding="3" BackgroundColor="White" Visual="Material" Margin="3" 
+                                     Command="{Binding Path=DeleteCommand, Source={x:Reference Name=rootViewCell}}" 
+                                     CommandParameter="{Binding Path=DeleteCommandParameter, Source={x:Reference Name=rootViewCell}}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="&#xf1f8;" Color="Black" FontFamily="{StaticResource FontAwesomeSolid}" />
+                            </ImageButton.Source>
+                        </ImageButton>
+
+                        <!--edit field button-->
+                        <ImageButton HorizontalOptions="End" Padding="3" BackgroundColor="White" Visual="Material" Margin="3" Clicked="EditFieldButtonClicked">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="&#xf044;" Color="Black" FontFamily="{StaticResource FontAwesomeRegular}" />
+                            </ImageButton.Source>
+                        </ImageButton>
+
+                        <!--show field on map button-->
+                        <ImageButton HorizontalOptions="End" Padding="3" BackgroundColor="White" Visual="Material" Margin="3" 
+                                     Command="{Binding Path=ShowFieldCommand, Source={x:Reference Name=rootViewCell}}" 
+                                     CommandParameter="{Binding Path=ShowFieldCommandParameter, Source={x:Reference Name=rootViewCell}}">
+                            <ImageButton.Source>
+                                <FontImageSource Glyph="&#xf59f;" Color="Black" FontFamily="{StaticResource FontAwesomeSolid}" />
+                            </ImageButton.Source>
+                        </ImageButton>
+                    </StackLayout>
+                    <StackLayout x:Name="EditFieldLayout" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" IsVisible="False" HeightRequest="0" MinimumHeightRequest="70">
+                        <Button Text="Save" Padding="8" Margin="10" TextColor="Black" Visual="Material" 
+                                Clicked="SaveButtonClicked"
+                                BackgroundColor="White" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" 
+                                Command="{Binding Path=UpdateFieldCommand, Source={x:Reference Name=rootViewCell}}" 
+                                CommandParameter="{Binding Path=UpdateFieldCommandParameter, Source={x:Reference Name=rootViewCell}}"/>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

@@ -4,9 +4,9 @@ BoundaryDetector is a sample Application which I developed while learning Xamari
 
 
 <p align="center">
-<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/1.png" width="30%" height="35%"/>
-<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/2.png" width="30%" height="35%"/>
-<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/3.png" width="30%" height="35%"/>
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/1.jpg" width="30%" height="35%"/>
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/2.jpg" width="30%" height="35%"/>
+<img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/BoundaryDetector/Screenshots/3.jpg" width="30%" height="35%"/>
 </p>
 
 

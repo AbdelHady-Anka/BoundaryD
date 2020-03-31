@@ -37,3 +37,7 @@ This means that there can be multiple publishers that publish a single message, 
 <img src="https://github.com/abdelhady-anka/BoundaryD/blob/master/Screenshots/mc.png"/>
 </p>
 
+## References
+1. [MVVM Pattern](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/enterprise-application-patterns/mvvm)
+2. [Getting started with Xamarin Forms](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/)
+3. [Xamarin.Forms MVVM](https://medium.com/swlh/xamarin-forms-mvvm-how-to-work-with-sqlite-db-c-xaml-26fcae303edd)
